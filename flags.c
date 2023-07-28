@@ -25,7 +25,7 @@ int get_flags(const char *format, int *i)
 				break;
 			}
 
-		if (FLAGS_CH[b] == 0)
+		if (FLAG_CH[b] == 0)
 			break;
 	}
 

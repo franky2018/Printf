@@ -74,7 +74,7 @@ int write_number(int is_negative, int ind, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int len = BUFF_SIZE - ind - 1;
-	char pad = ' ', extra_char = 0;
+	char pad = ' ', extra_chars = 0;
 
 	UNUSED(size);
 
@@ -83,12 +83,12 @@ int write_number(int is_negative, int ind, char buffer[],
 	if (is_negative)
 		extra_chars = '-';
 	else if (flags & F_Plus)
-		extra_char = '+';
+		extra_chars = '+';
 	else if (flags & F_Space)
-		extra_char = ' ';
+		extra_chars = ' ';
 
 	return (write_num(ind, buffer, flags, width, precision,
-		len, pad, extra_char));
+		len, pad, extra_chars));
 }
 
 /**
@@ -241,7 +241,7 @@ int write_num(int ind, char buffer[],
 		{
 			if (extra_c)
 				buffer[--pad_start] = extra_c;
-			return (write(1, &buffer[pad_start], i - pad_start) +
+			return (write(1, &buffer[pad_start], a - pad_start) +
 				write(1, &buffer[ind], length - (1 - pad_start)));
 		}
 	}
